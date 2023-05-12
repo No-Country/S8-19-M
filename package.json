@@ -19,6 +19,7 @@
   "homepage": "https://github.com/No-Country/S8-19-M#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
-    "@commitlint/config-conventional": "^17.6.3"
+    "@commitlint/config-conventional": "^17.6.3",
+    "husky": "^8.0.3"
   }
 }
