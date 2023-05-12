@@ -7,6 +7,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Chat } from '@/components/chat';
 
+
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
@@ -19,8 +20,8 @@ const metadata = {
   description: 'Tu banco amigo',
 };
 
-export default function RootLayout({
-  children,
+export default function RootLayout ({
+  children
 }: {
   children: React.ReactNode;
 }) {
