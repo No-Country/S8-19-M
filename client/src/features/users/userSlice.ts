@@ -1,35 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-
-const user: User =
-  typeof window !== 'undefined' && localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
-    : {
-        id: '',
-        email: '',
-        fisrtName: '',
-        lastName: '',
-      };
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  currentUser: user,
-};
+  currentUser: false
+}
 
 export const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.currentUser = action.payload;
+      state.currentUser = action.payload
     },
     removeUser: (state) => {
-      state.currentUser = initialState.currentUser;
-    },
-  },
-});
+      state.currentUser = initialState.currentUser
+    }
+  }
+})
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser } = userSlice.actions
 
-export const selectCurrentUser = (state) => state.user.currentUser;
+export const selectCurrentUser = (state) => state.user.currentUser
 
-export default userSlice.reducer;
+export default userSlice.reducer
