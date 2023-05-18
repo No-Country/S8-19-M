@@ -4,15 +4,15 @@ import CarouselItemCard from './CarouselItemCard'
 
 export default function Carousel() {
   const { activeCard, actualCard, handlePage } = useCarousel()
-  const activeNav = 'bg-blue-600'
+
   return (
     <>
-      <section className='flex justify-center flex-col items-center px-4'>
+      <section className='flex justify-center flex-col items-center px-4 max-w-5xl'>
         <header className='flex w-full gap-3 my-4 justify-center'>
-          <div className={`bg-gray-200 h-1 flex-1 max-w-[85px] rounded ${activeNav}`} />
-          <div className={`bg-gray-200 h-1 flex-1 max-w-[85px] rounded ${actualCard > 0 ? activeNav : ''}`} />
-          <div className={`bg-gray-200 h-1 flex-1 max-w-[85px] rounded ${actualCard > 1 ? activeNav : ''}`} />
-          <div className={`bg-gray-200 h-1 flex-1 max-w-[85px] rounded ${actualCard > 2 ? activeNav : ''}`} />
+          <div className={`h-[2px] flex-1 max-w-[85px] rounded ${actualCard >= 0 ? 'bg-blue-600' : 'bg-gray-200'}`} />
+          <div className={`h-[2px] flex-1 max-w-[85px] rounded ${actualCard > 0 ? 'bg-blue-600' : 'bg-gray-200'}`} />
+          <div className={`h-[2px] flex-1 max-w-[85px] rounded ${actualCard > 1 ? 'bg-blue-600' : 'bg-gray-200'}`} />
+          <div className={`h-[2px] flex-1 max-w-[85px] rounded ${actualCard > 2 ? 'bg-blue-600' : 'bg-gray-200'}`} />
         </header>
         <CarouselItemCard
           handlePage={handlePage}
