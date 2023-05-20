@@ -1,8 +1,7 @@
 import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 import Image from 'next/image'
-
-import CustomInput from './CustomInput'
+import CustomInput from '@/components/common/CustomInput'
 
 const error = { userName: '', password: '' }
 export default function LoginForm() {
@@ -44,7 +43,7 @@ export default function LoginForm() {
           </Link>
         </div>
 
-        {/* most be change when de CustomButon is ready */}
+        {/* most be change when de CustomButton is ready */}
         <button type='submit' className='disabled:bg-neutral-300 my-4 w-full rounded-full bg-blue-500 py-2 font-bold uppercase text-white hover:bg-blue-600 md:my-12'>
           Iniciar sesión
         </button>
