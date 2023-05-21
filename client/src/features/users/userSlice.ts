@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '@/store/store'
 
 const initialState = {
   currentUser: false
@@ -19,6 +20,6 @@ export const userSlice = createSlice({
 
 export const { setUser, removeUser } = userSlice.actions
 
-export const selectCurrentUser = (state) => state.user.currentUser
+export const selectCurrentUser = (state: RootState) => state.user.currentUser
 
 export default userSlice.reducer

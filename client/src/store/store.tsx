@@ -1,10 +1,12 @@
 // 'use client';
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from '../features/users/userSlice'
+import userReducer from '@/features/users/userSlice'
+import registerSlice from '@/features/register/registerSlice'
 
 export const store = configureStore({
   reducer: {
-    user: userReducer
+    user: userReducer,
+    register: registerSlice
   }
 })
 
