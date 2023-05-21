@@ -9,22 +9,18 @@ import { FormStep3 } from './FormStep3'
 
 export default function Register() {
   const initialValues = {
-    userData: {
-      username: '',
-      password: '',
-      pwdConfirm: '',
-      dni: ''
-    },
-    errors: {
-      userName: '',
-      password: '',
-      pwdConfirm: '',
-      dni: ''
-    }
+    userName: '',
+    password: '',
+    pwdConfirm: '',
+    firstName: '',
+    lastName: '',
+    dni: '',
+    phone: '',
+    address: ''
   }
   const currentStep = useSelector(selectCurrentStep)
   const [userRegister, setUserRegister] = useState(initialValues)
-  const formData = [<FormStep1 values={userRegister} />, <FormStep2 values={userRegister} />, <FormStep3 values={userRegister} />]
+  const formData = [<FormStep1 values={userRegister} setValues={setUserRegister} />, <FormStep2 values={userRegister} setValues={setUserRegister} />, <FormStep3 values={userRegister} setValues={setUserRegister} />]
   const { steps, step, back, next } = useMultistepForm(formData)
 
   return (
