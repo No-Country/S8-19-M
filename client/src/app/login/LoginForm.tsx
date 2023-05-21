@@ -1,29 +1,35 @@
-import { revalidatePath } from 'next/cache'
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useForm, RegisterOptions } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+
 import CustomInput from '@/components/common/CustomInput'
+import { Schema as schema } from './loginValidations'
 
-const error = { userName: '', password: '' }
+interface FormData {
+  userName: string
+  password: string
+}
+
 export default function LoginForm() {
-  async function handleSubmit(values: FormData) {
-    'use server'
-    const userName = values.get('userName') as string
-    const password = values.get('password') as string
-    error.userName = ''
-    error.password = ''
-    if (userName === '') {
-      error.userName = 'Debe ingresar su nombre de usuario'
-      revalidatePath('/login')
-      return
-    }
-
-    if (password === '') {
-      error.password = 'Debe ingresar su contraseña'
-      revalidatePath('/login')
-      return
-    }
-    revalidatePath('/')
+  const intialValues: FormData = {
+    userName: '',
+    password: ''
   }
+
+  const onSubmit = (data: FormData) => {
+    alert('datos validos, consumir login api res')
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    defaultValues: intialValues
+  })
 
   return (
     <article className='relative mx-auto flex h-full max-w-md flex-col justify-center'>
@@ -33,9 +39,9 @@ export default function LoginForm() {
         </span>
         {/* <h1 className='text-center text-3xl font-bold text-blue-500 md:text-4xl lg:text-6xl'>BlueBank</h1> */}
       </div>
-      <form action={handleSubmit} className='text-center'>
-        <CustomInput error={error.userName} label='Nombre de Usuario' name='userName' placeholder='ingrese su nombre de usuario' />
-        <CustomInput error={error.password} label='Contraseña' name='password' placeholder='ingrese su contraseña' type='password' />
+      <form onSubmit={handleSubmit(onSubmit)} className='text-center'>
+        <CustomInput register={register} error={errors?.userName} label='Email' name='userName' placeholder='ingrese su Email' />
+        <CustomInput register={register} error={errors?.password} label='Contraseña' name='password' placeholder='ingrese su contraseña' type='password' />
 
         <div>
           <Link href='/resetpassword' className='mb-12 text-sm text-blue-500 hover:underline '>
